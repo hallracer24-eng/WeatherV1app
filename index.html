@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dylan Weather V1</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="starfield"></canvas>
+
+<div class="app">
+
+<!-- LEFT PANEL -->
+<div class="main">
+<input placeholder="Search city..." id="search">
+
+<h1 id="location">Dallas, TX</h1>
+<div class="temp" id="temp">72°</div>
+
+<div class="details">
+<div>Wind: 5 mph</div>
+<div>Rain: 20%</div>
+</div>
+
+<!-- HOURLY -->
+<div class="card">
+<h3>Today's Forecast</h3>
+<div class="hourly" id="hourly"></div>
+</div>
+
+<div class="buttons">
+<button onclick="showPage('radarPage')">Radar</button>
+<button onclick="openModal('notifications')">Notifications</button>
+<button onclick="openModal('support')">Support</button>
+<button onclick="openModal('review')">Review</button>
+<button onclick="openModal('dailyForecastModal')">Daily</button>
+</div>
+</div>
+
+<!-- RIGHT PANEL -->
+<div class="sidebar">
+<h3>7 Day Forecast</h3>
+<div id="forecast"></div>
+</div>
+
+</div>
+
+<!-- PAGES -->
+
+<!-- RADAR PAGE -->
+<div class="page" id="radarPage" style="display:none;">
+<div class="radar-container">
+<div class="radar-grid"></div>
+<div class="radar-sweep"></div>
+<div class="radarStorm"></div>
+<div class="radarStorm blue"></div>
+</div>
+<button onclick="refreshRadar()">Refresh Radar</button>
+<button onclick="closeRadar()">Close Radar</button>
+</div>
+
+<!-- LOCATION POPUP -->
+<div class="modal" id="locationModal">
+<div class="box">
+<h2>Enable Location</h2>
+<button onclick="setLocation()">Allow</button>
+</div>
+</div>
+
+<!-- NOTIFICATIONS -->
+<div class="modal" id="notifications">
+<div class="box">
+<h2>Enable Severe Weather Alerts</h2>
+<p>You will receive notifications for severe weather conditions.</p>
+<button onclick="closeModal('notifications')">OK</button>
+</div>
+</div>
+
+<!-- SUPPORT -->
+<div class="modal" id="support">
+<div class="box">
+<h2>Support</h2>
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<textarea id="msg" placeholder="Your message..."></textarea>
+<button onclick="sendSupport()">Send</button>
+</div>
+</div>
+
+<!-- REVIEW -->
+<div class="modal" id="review">
+<div class="box">
+<h2>Review</h2>
+<div id="stars">
+<span onclick="rate(1)">⭐</span>
+<span onclick="rate(2)">⭐</span>
+<span onclick="rate(3)">⭐</span>
+<span onclick="rate(4)">⭐</span>
+<span onclick="rate(5)">⭐</span>
+</div>
+<textarea id="reviewText" placeholder="Write your review..."></textarea>
+<button onclick="submitReview()">Submit</button>
+</div>
+</div>
+
+<!-- DAILY FORECAST MODAL -->
+<div class="modal" id="dailyForecastModal">
+<div class="box daily-box">
+<h2>7-Day Forecast</h2>
+<div id="dailyForecastList"></div>
+<button onclick="closeModal('dailyForecastModal')">Close</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
